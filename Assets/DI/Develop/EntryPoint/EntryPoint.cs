@@ -34,6 +34,7 @@ namespace DI.Game.Develop.EntryPoint
             RegisterSceneLoader(projectContainer);
             RegisterSceneSwitcher(projectContainer);
 
+            RegisterSaveLoadService(projectContainer);
             Debug.LogError("Cheack saving system");
             RegisterPlayerDataProvider(projectContainer);
 
@@ -58,6 +59,9 @@ namespace DI.Game.Develop.EntryPoint
             QualitySettings.vSyncCount = 0; 
             Application.targetFrameRate = 144;
         }
+
+        private void RegisterSaveLoadService(DIContainer container)
+            => container.RegisterAsSingle<ISaveLoadSerivce>(c => new SaveLoadService(new JsonSerializer(), new LocalDataRepository()));
 
         private void RegisterConfigsProviderService(DIContainer container)
             => container.RegisterAsSingle(c => new ConfigsProviderService(c.Resolve<ResourcesAssetLoader>()));
