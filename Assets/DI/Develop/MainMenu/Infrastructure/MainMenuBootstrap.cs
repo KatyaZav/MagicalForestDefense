@@ -53,24 +53,4 @@ public class MainMenuBootstrap : MonoBehaviour
 
         _container.Initialize();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _container.Resolve<SceneSwitcher>().ProcessSwitchSceneFor(new OutputMainMenuArgs(new GameplayInputArgs(2)));
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            WalletService wallet = _container.Resolve<WalletService>();
-            wallet.Add(CurrencyTypes.Gold, 100);
-            Debug.Log($"Δενÿκ: {wallet.GetCurrency(CurrencyTypes.Gold).Value}");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _container.Resolve<PlayerDataProvider>().Save();
-        }
-    }
 }

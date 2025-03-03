@@ -6,12 +6,12 @@
 
     public class GameplayInputArgs : IInputSceneArgs
     {
-        public GameplayInputArgs(int levelNumber)
+        public GameplayInputArgs()
         {
-            LevelNumber = levelNumber;
+            //LevelNumber = levelNumber;
         }
 
-        public int LevelNumber { get; }
+        //public int LevelNumber { get; }
     }
 
     public class MainMenuInputArgs : IInputSceneArgs

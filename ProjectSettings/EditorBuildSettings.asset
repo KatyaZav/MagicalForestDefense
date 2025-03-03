@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/DI/Scene/Empty.unity
     guid: 26baf946b77057547bcf87822cb6bbb5
   - enabled: 1
-    path: Assets/MagicalForest/Scenes/Menu.unity
+    path: Assets/MagicalForest/Scenes/MainMenu.unity
     guid: e56000f4edccebe458cf842943524719
   - enabled: 1
     path: Assets/MagicalForest/Scenes/Gameplay.unity

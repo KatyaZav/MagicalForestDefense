@@ -70,7 +70,7 @@ namespace DI.Game.Develop.MainMenu.LevelsMenuFeature.LevelsMenuPopup
                 return;
             }
 
-            _sceneSwitcher.ProcessSwitchSceneFor(new OutputMainMenuArgs(new GameplayInputArgs(_levelNumber)));
+            _sceneSwitcher.ProcessSwitchSceneFor(new OutputMainMenuArgs(new GameplayInputArgs()));
         }
 
         private bool PreviousLevelCompleted() => _levelsService.IsLevelCompleted(_levelNumber - 1);

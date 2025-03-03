@@ -57,7 +57,7 @@ namespace DI.Game.Develop.EntryPoint
         {
             Debug.LogError("Cheak settings before build");
             QualitySettings.vSyncCount = 0; 
-            Application.targetFrameRate = 144;
+            Application.targetFrameRate = 60;
         }
 
         private void RegisterSaveLoadService(DIContainer container)

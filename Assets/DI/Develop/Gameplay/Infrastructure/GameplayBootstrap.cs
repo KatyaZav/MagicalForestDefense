@@ -18,7 +18,7 @@ namespace DI.Game.Develop.Gameplay.Infrastructure
 
             ProcessRegistrations();
 
-            Debug.Log($"Подгружаем ресурсы для уровня {gameplayInputArgs.LevelNumber}");
+            //Debug.Log($"Подгружаем ресурсы для уровня {gameplayInputArgs.LevelNumber}");
             Debug.Log("Создаем персонажа");
             Debug.Log("Сцена готова можно начинать игру");
 

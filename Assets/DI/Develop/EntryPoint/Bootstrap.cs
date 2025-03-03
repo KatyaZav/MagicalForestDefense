@@ -26,7 +26,8 @@ namespace DI.Game.Develop.EntryPoint
             container.Resolve<ConfigsProviderService>().LoadAll();
             container.Resolve<PlayerDataProvider>().Load();
 
-            yield return new WaitForSeconds(1.5f);//инициализация какого-то процесса инициализация
+            Debug.Log("Add YSDK cheaked");
+            yield return null;//инициализация какого-то процесса инициализация
 
             Debug.Log("Завершается инициализация сервисов проекта, начинается переход на какую-то сцену");
 
@@ -34,7 +35,7 @@ namespace DI.Game.Develop.EntryPoint
 
             //переход на следующий сцену с помощью сервиса смены сцен
 
-            sceneSwitcher.ProcessSwitchSceneFor(new OutpurBootstrapArgs(new MainMenuInputArgs()));
+            sceneSwitcher.ProcessSwitchSceneFor(new OutpurBootstrapArgs(new GameplayInputArgs()));
         }
     }
 }
