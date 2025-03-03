@@ -1,4 +1,4 @@
-﻿using Assets.Gameplay.Features.Enemy;
+﻿using Assets.Gameplay.Features.EnemyData;
 using UnityEngine;
 
 namespace Assets.Gameplay.Features.Wave.Configs

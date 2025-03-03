@@ -1,4 +1,4 @@
-using Assets.Gameplay.Features.Enemy;
+using Assets.Gameplay.Features.EnemyData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

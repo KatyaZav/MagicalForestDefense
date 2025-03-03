@@ -2,9 +2,9 @@ using Assets.Servises.Interfaces;
 using System;
 using UnityEngine;
 
-namespace Assets.Gameplay.Features.Enemy
+namespace Assets.Gameplay.Features.EnemyData
 {
-    public class BaseEnemy : MonoBehaviour, IUpdatable
+    public class BaseEnemy : MonoBehaviour, Servises.Interfaces.IUpdatable
     {
         public event Action<BaseEnemy> Died;
 

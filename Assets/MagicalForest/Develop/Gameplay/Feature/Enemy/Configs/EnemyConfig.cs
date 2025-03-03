@@ -1,7 +1,7 @@
 ﻿using Assets.Servises.Configs;
 using UnityEngine;
 
-namespace Assets.Gameplay.Features.Enemy
+namespace Assets.Gameplay.Features.EnemyData
 {
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Configs/Gameplay/Enemy/EnemyData", order = 1)]
     public class EnemyConfig : ScriptableObject
@@ -10,6 +10,6 @@ namespace Assets.Gameplay.Features.Enemy
         [field: SerializeField] public int Reward { get; private set; } = 10;
         [field:SerializeField] public int Speed { get; private set; }
         [field:SerializeField] public int Health { get; private set; }
-        [field:SerializeField] public GameObject Model { get; private set; }
+        [field:SerializeField] public Enemy Model { get; private set; }
     }
 }

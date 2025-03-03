@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Mover : IUpdateble
+public class Mover : IUpdatable
 {
     private Rigidbody _rigidbody;
     private float _speed;
@@ -22,7 +22,7 @@ public class Mover : IUpdateble
         _targetPosition = new Vector3(targetPosition.x, _rigidbody.transform.position.y, targetPosition.z);
     }
 
-    public void Update(float deltaTime)
+    public void CustomUpdate(float deltaTime)
     {
         if (_targetPosition == null)
             throw new System.Exception("Not add target positiopn to move");

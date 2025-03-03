@@ -25,6 +25,8 @@ public class GameplayBootstrap : MonoBehaviour
 
     private void ProcessRegistrations()
     {
-        throw new NotImplementedException();
+        _container.RegisterAsSingle(c => new EnemiesHolder());
+
+        _container.Initialize();
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathMover : IUpdateble
+public class PathMover : IUpdatable
 {
     private const float MinimumDistance = 0.01f;
 
@@ -21,9 +21,9 @@ public class PathMover : IUpdateble
         _mover.MoveTo(_currentTarget.position);
     }
 
-    public void Update(float deltaTime)
+    public void CustomUpdate(float deltaTime)
     {
-        _mover.Update(deltaTime);
+        _mover.CustomUpdate(deltaTime);
 
         if (CheakIsCompletePath())
         {
