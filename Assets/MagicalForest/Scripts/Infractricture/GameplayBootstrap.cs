@@ -1,3 +1,4 @@
+using Assets.Gameplay.Features.Wave.Configs;
 using DI.Game.Develop.CommonServices.CoroutinePerfomer;
 using DI.Game.Develop.CommonServices.SceneManagment;
 using DI.Game.Develop.Configs.Gameplay;
@@ -26,6 +27,8 @@ public class GameplayBootstrap : MonoBehaviour
         Debug.Log("Создаем персонажа");
         Debug.Log("Сцена готова можно начинать игру");
 
+        _container.Resolve<WaveSystem>().StartWaves();
+
         yield return null;
     }
 
@@ -35,6 +38,11 @@ public class GameplayBootstrap : MonoBehaviour
         _container.RegisterAsSingle(c => new Spawner(
             _container.Resolve<EnemiesHolder>(),
             _levelHolder.GetQueue(),
+            _container.Resolve<CoroutinePerformer>()));
+
+        _container.RegisterAsSingle(c => new WaveSystem(
+            _container.Resolve<Spawner>(),
+            Resources.Load<GameWavesConfig>("Waves/WavesData/Level1"),
             _container.Resolve<CoroutinePerformer>()));
 
         _container.Initialize();

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Assets.Gameplay.Features.Wave.Configs
 {
-    [CreateAssetMenu(fileName = "WaveData", menuName = "Configs/Gameplay/WaveConfigs/WaveData", order = 1)]
-    public class WaveConfig : ScriptableObject
+    [System.Serializable]
+    public class WaveConfig
     {
         [SerializeField] private List<WaveEnemy> _waveEnemies;        
         

@@ -8,6 +8,6 @@ namespace Assets.Gameplay.Features.Wave.Configs
     {
         [SerializeField] private List<WaveConfig> _wavesConfig = new List<WaveConfig>();
 
-        private IReadOnlyList<WaveConfig> GameWaves => _wavesConfig;
+        public IReadOnlyList<WaveConfig> GameWaves => _wavesConfig;
     }
 }
