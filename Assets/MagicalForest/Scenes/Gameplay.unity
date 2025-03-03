@@ -8028,6 +8028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1815409987}
+  - component: {fileID: 1815409988}
   m_Layer: 0
   m_Name: Level1
   m_TagString: Untagged
@@ -8053,6 +8054,19 @@ Transform:
   - {fileID: 1761760545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1815409988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815409986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacd6b7c92d56624bb2ccef8c3691910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pathHolder: {fileID: 1761760546}
 --- !u!1 &1831836084
 GameObject:
   m_ObjectHideFlags: 0
