@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53216b9a003d4bf4e9902d68777cf9d6, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Goblin
+  <Name>k__BackingField: {fileID: 0}
+  <Reward>k__BackingField: 10
   <Speed>k__BackingField: 5
   <Health>k__BackingField: 10
-  <Model>k__BackingField: {fileID: 2787965789383187502, guid: 42b62ca0e9fc9fe4f99d7b1c4d73360e, type: 3}
+  <Model>k__BackingField: {fileID: -801492358721192721, guid: 42b62ca0e9fc9fe4f99d7b1c4d73360e, type: 3}
