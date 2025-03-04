@@ -1,24 +1,17 @@
-using System;
-using System.Collections.Generic;
-
-public class EnemiesHolder
+public class EnemiesHolder : IUpdatable
 {
-    public event Action<int> ListChanged;
-    private List<Enemy> _enemies = new List<Enemy>();
+    private EnemiesListHolderSystem _enemiesListHolderSystem;
 
-    public IReadOnlyList<Enemy> Enemies => _enemies;
-
-    public void AddEnemy(Enemy enemy)
+    public EnemiesHolder(EnemiesListHolderSystem enemiesListHolderSystem)
     {
-        _enemies.Add(enemy);
-        ListChanged?.Invoke(_enemies.Count);
+        _enemiesListHolderSystem = enemiesListHolderSystem;
     }
 
-    public void RemoveEnemy(Enemy enemy)
+    public void CustomUpdate(float deltaTime)
     {
-        if (_enemies.Remove(enemy) == false)
-            throw new System.Exception("Try to remove enemy not exist");
-        
-        ListChanged?.Invoke(_enemies.Count);
+        foreach (var enemy in _enemiesListHolderSystem.Enemies)
+        {
+            enemy.CustomUpdate(deltaTime);
+        }
     }
 }

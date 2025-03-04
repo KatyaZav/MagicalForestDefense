@@ -13,18 +13,21 @@ public class GameplayBootstrap : MonoBehaviour
 {
     private DIContainer _container;
 
-    private LevelHolder _levelHolder;
+    private LevelDataHolder _levelHolder;
+
+    private List<IUpdatable> _updatables = new List<IUpdatable>();
 
     public IEnumerator Run(DIContainer container, GameplayInputArgs gameplayInputArgs)
     {
         _container = container;
 
-        _levelHolder = FindObjectOfType<LevelHolder>();
+        _levelHolder = FindObjectOfType<LevelDataHolder>();
 
         if (_levelHolder == null)
             throw new Exception("Not found level");
 
         ProcessRegistrations();
+        ProcessCreation();
 
         //Debug.Log($"Подгружаем ресурсы для уровня {gameplayInputArgs.LevelNumber}");
         Debug.Log("Сцена готова можно начинать игру");
@@ -34,11 +37,22 @@ public class GameplayBootstrap : MonoBehaviour
         yield return null;
     }
 
+    private void Update()
+    {
+        foreach (var updateble in _updatables)
+            updateble.CustomUpdate(Time.deltaTime);
+    }
+
+    private void ProcessCreation()
+    {
+        _updatables.Add(_container.Resolve<EnemiesHolder>());
+    }
+
     private void ProcessRegistrations()
     {
-        _container.RegisterAsSingle(c => new EnemiesHolder());
+        _container.RegisterAsSingle(c => new EnemiesListHolderSystem());
         _container.RegisterAsSingle(c => new Spawner(
-            _container.Resolve<EnemiesHolder>(),
+            _container.Resolve<EnemiesListHolderSystem>(),
             _levelHolder.GetQueue(),
             _container.Resolve<ICoroutinePerformer>()));
                
@@ -46,6 +60,10 @@ public class GameplayBootstrap : MonoBehaviour
             _container.Resolve<Spawner>(),
             Resources.Load<GameWavesConfig>("Waves/WavesData/Level1"),
             _container.Resolve<ICoroutinePerformer>()));
+
+        _container.RegisterAsSingle(c => new EnemiesHolder(
+            _container.Resolve<EnemiesListHolderSystem>()
+            ));
 
         _container.Initialize();
     }

@@ -11,19 +11,19 @@ public class Spawner
 
     private ICoroutinePerformer _coroutinePerformer;
 
-    private EnemiesHolder _holder;
-    private Queue<Transform> _path;
-    private Transform _startPoint;
+    private EnemiesListHolderSystem _holder;
+    private Queue<Vector3> _path;
+    private Vector3 _startPoint;
 
     private ReactiveVariable<bool> _isSpawning = new ReactiveVariable<bool>(false);
 
-    public Spawner(EnemiesHolder holder, Queue<Transform> path, ICoroutinePerformer root)
+    public Spawner(EnemiesListHolderSystem holder, Queue<Vector3> path, ICoroutinePerformer root)
     {
         _holder = holder;
         _path = path;
         _coroutinePerformer = root;
 
-        _startPoint = _path.Peek();
+        _startPoint = _path.Dequeue();
     }
 
     public IReadOnlyVariable<bool> IsSpawning => _isSpawning;
@@ -55,9 +55,9 @@ public class Spawner
             throw new System.Exception("Model is null");
 
         Enemy spawnerEnemy = GameObject.Instantiate(enemyConfig.Model,
-            _startPoint.position, _startPoint.rotation);
+            _startPoint, Quaternion.identity);
 
-        spawnerEnemy.Init(enemyConfig, new Queue<Transform>(_path));
+        spawnerEnemy.Init(enemyConfig, new Queue<Vector3>(_path));
 
         _holder.AddEnemy(spawnerEnemy);
     }

@@ -1,19 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelHolder : MonoBehaviour
+public class LevelDataHolder : MonoBehaviour
 {
     [SerializeField] private PathHolder _pathHolder;
 
     public IReadOnlyList<Transform> Path => _pathHolder.Paths;
 
-    public Queue<Transform> GetQueue()
+    public Queue<Vector3> GetQueue()
     {
-        Queue<Transform> queue = new Queue<Transform>();
+        Queue<Vector3> queue = new Queue<Vector3>();
 
         foreach (Transform t in _pathHolder.Paths)
         {
-            queue.Enqueue(t);
+            Vector3 newVector = t.position;
+            queue.Enqueue(newVector);
         }
 
         return queue;

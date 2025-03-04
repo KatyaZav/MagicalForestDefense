@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 
     private bool _isDead;
 
-    public void Init(EnemyConfig config, Queue<Transform> path)
+    public void Init(EnemyConfig config, Queue<Vector3> path)
     {
         Mover mover = new Mover(transform, config.Speed);
         _pathMover = new PathMover(mover, path);
