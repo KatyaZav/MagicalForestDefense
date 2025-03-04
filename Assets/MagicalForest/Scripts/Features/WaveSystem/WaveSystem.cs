@@ -10,12 +10,12 @@ public class WaveSystem : IDisposable
 {
     private Spawner _spawner;
     private GameWavesConfig _waveConfig;
-    private CoroutinePerformer _performer;
+    private ICoroutinePerformer _performer;
 
     Coroutine _coroutine;
     int _currentWave = 0;
 
-    public WaveSystem(Spawner spawner, GameWavesConfig waveConfig, CoroutinePerformer performer)
+    public WaveSystem(Spawner spawner, GameWavesConfig waveConfig, ICoroutinePerformer performer)
     {
         _spawner = spawner;
         _waveConfig = waveConfig;
@@ -35,12 +35,15 @@ public class WaveSystem : IDisposable
 
     private IEnumerator GameCycle()
     {
-        while (true)
+        for (var waveCount = 0; waveCount < _waveConfig.GameWaves.Count; waveCount++)
         {
+            Debug.Log($"Start new wave number{waveCount}");
             var currentWaveData = _waveConfig.GameWaves[_currentWave];
 
             for (var i = 0; i < currentWaveData.WaveEnemies.Count; i++)
             {
+                Debug.Log($"Start spawning {currentWaveData.WaveEnemies[i].Enemy}");
+
                 _spawner.SpawnEnemies(
                     currentWaveData.WaveEnemies[i].Enemy, currentWaveData.WaveEnemies[i].Count);
 

@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class Mover : IUpdatable
 {
-    private Rigidbody _rigidbody;
+    private Transform _transform;
     private float _speed;
 
     private Vector3 _targetPosition;
 
-    public Mover(Rigidbody rb, float speed)
+    public Mover(Transform rb, float speed)
     {
-        _rigidbody = rb;
+        _transform = rb;
         _speed = speed;
     }
 
-    public Vector3 CurrentPosition => _rigidbody.transform.position;
+    public Vector3 CurrentPosition => _transform.transform.position;
 
     public void MoveTo(Vector3 targetPosition)
     {
-        _rigidbody.gameObject.transform.LookAt(targetPosition);
-        _targetPosition = new Vector3(targetPosition.x, _rigidbody.transform.position.y, targetPosition.z);
+        _transform.gameObject.transform.LookAt(targetPosition);
+        _targetPosition = new Vector3(targetPosition.x, _transform.transform.position.y, targetPosition.z);
     }
 
     public void CustomUpdate(float deltaTime)
@@ -27,7 +27,7 @@ public class Mover : IUpdatable
         if (_targetPosition == null)
             throw new System.Exception("Not add target positiopn to move");
 
-        Vector3 direction = (_targetPosition - _rigidbody.transform.position).normalized;
-        _rigidbody.transform.position += direction * _speed * Time.deltaTime;
+        Vector3 direction = (_targetPosition - _transform.transform.position).normalized;
+        _transform.transform.position += direction * _speed * Time.deltaTime;
     }
 }

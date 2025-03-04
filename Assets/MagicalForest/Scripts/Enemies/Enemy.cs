@@ -9,8 +9,6 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 {
     public event Action<Enemy> Died;
 
-    [SerializeField] private Rigidbody _rigidbody;
-
     private PathMover _pathMover;
     private ReactiveVariable<float> _health;
 
@@ -18,7 +16,7 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 
     public void Init(EnemyConfig config, Queue<Transform> path)
     {
-        Mover mover = new Mover(_rigidbody, config.Speed);
+        Mover mover = new Mover(transform, config.Speed);
         _pathMover = new PathMover(mover, path);
     }
 

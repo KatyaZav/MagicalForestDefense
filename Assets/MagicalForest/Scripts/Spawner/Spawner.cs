@@ -9,15 +9,15 @@ public class Spawner
 {
     private const float TimeBetween = 0.1f;
 
-    private CoroutinePerformer _coroutinePerformer;
+    private ICoroutinePerformer _coroutinePerformer;
 
     private EnemiesHolder _holder;
     private Queue<Transform> _path;
     private Transform _startPoint;
 
-    private ReactiveVariable<bool> _isSpawning;
+    private ReactiveVariable<bool> _isSpawning = new ReactiveVariable<bool>(false);
 
-    public Spawner(EnemiesHolder holder, Queue<Transform> path, CoroutinePerformer root)
+    public Spawner(EnemiesHolder holder, Queue<Transform> path, ICoroutinePerformer root)
     {
         _holder = holder;
         _path = path;
@@ -51,10 +51,13 @@ public class Spawner
 
     private void SpawnEnemy(EnemyConfig enemyConfig)
     {
+        if (enemyConfig.Model == null)
+            throw new System.Exception("Model is null");
+
         Enemy spawnerEnemy = GameObject.Instantiate(enemyConfig.Model,
             _startPoint.position, _startPoint.rotation);
 
-        spawnerEnemy.Init(enemyConfig, _path);
+        spawnerEnemy.Init(enemyConfig, new Queue<Transform>(_path));
 
         _holder.AddEnemy(spawnerEnemy);
     }

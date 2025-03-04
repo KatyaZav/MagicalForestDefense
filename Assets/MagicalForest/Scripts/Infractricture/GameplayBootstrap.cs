@@ -21,10 +21,12 @@ public class GameplayBootstrap : MonoBehaviour
 
         _levelHolder = FindObjectOfType<LevelHolder>();
 
+        if (_levelHolder == null)
+            throw new Exception("Not found level");
+
         ProcessRegistrations();
 
         //Debug.Log($"Подгружаем ресурсы для уровня {gameplayInputArgs.LevelNumber}");
-        Debug.Log("Создаем персонажа");
         Debug.Log("Сцена готова можно начинать игру");
 
         _container.Resolve<WaveSystem>().StartWaves();
@@ -38,12 +40,12 @@ public class GameplayBootstrap : MonoBehaviour
         _container.RegisterAsSingle(c => new Spawner(
             _container.Resolve<EnemiesHolder>(),
             _levelHolder.GetQueue(),
-            _container.Resolve<CoroutinePerformer>()));
-
+            _container.Resolve<ICoroutinePerformer>()));
+               
         _container.RegisterAsSingle(c => new WaveSystem(
             _container.Resolve<Spawner>(),
             Resources.Load<GameWavesConfig>("Waves/WavesData/Level1"),
-            _container.Resolve<CoroutinePerformer>()));
+            _container.Resolve<ICoroutinePerformer>()));
 
         _container.Initialize();
     }
