@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Spawner
 {
-    private const float TimeBetween = 0.1f;
+    private const float TimeBetween = 0.2f;
 
     private ICoroutinePerformer _coroutinePerformer;
 
