@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
     private ReactiveVariable<float> _health;
 
     private bool _isDead;
-
+    
     public void Init(EnemyConfig config, Queue<Vector3> path)
     {
         Mover mover = new Mover(transform, config.Speed);

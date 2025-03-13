@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class PathMover : IUpdatable
 {
-    private const float MinimumDistance = 0.01f;
+    private const float MinimumDistance = 0.1f;
 
     public event Action PathCompleted;
 
     private Mover _mover;
     private Queue<Vector3> _paths;
-    private Vector3 _currentTarget;
 
     public PathMover(Mover mover, Queue<Vector3> paths)
     {
         _mover = mover;
         _paths = paths;
 
-        _currentTarget = _paths.Dequeue();
-        _mover.MoveTo(_currentTarget);
+        CurrentTarget = _paths.Dequeue();
+        _mover.MoveTo(CurrentTarget);
     }
+
+    public Vector3 CurrentTarget { get; private set; }
 
     public void CustomUpdate(float deltaTime)
     {
@@ -33,14 +34,14 @@ public class PathMover : IUpdatable
                 return;
             }
 
-            _currentTarget = _paths.Dequeue();
-            _mover.MoveTo(_currentTarget);
+            CurrentTarget = _paths.Dequeue();
+            _mover.MoveTo(CurrentTarget);
         }
     }
 
     private bool CheakIsCompletePath()
-    {
-        return Mathf.Abs(_mover.CurrentPosition.x - _currentTarget.x) < MinimumDistance
-            && Mathf.Abs(_mover.CurrentPosition.y - _currentTarget.y) < MinimumDistance;
+    { 
+        return Mathf.Abs(_mover.CurrentPosition.x - CurrentTarget.x) < MinimumDistance
+            && Mathf.Abs(_mover.CurrentPosition.z - CurrentTarget.z) < MinimumDistance;
     }
 }
