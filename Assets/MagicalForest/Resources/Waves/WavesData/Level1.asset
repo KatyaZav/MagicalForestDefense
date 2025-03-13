@@ -15,5 +15,5 @@ MonoBehaviour:
   _wavesConfig:
   - _waveEnemies:
     - <Enemy>k__BackingField: {fileID: 11400000, guid: bc6c1a6c295ce964eb35dcdd1daeef5b, type: 2}
-      <Count>k__BackingField: 1
+      <Count>k__BackingField: 10
     <IsBoss>k__BackingField: 0
