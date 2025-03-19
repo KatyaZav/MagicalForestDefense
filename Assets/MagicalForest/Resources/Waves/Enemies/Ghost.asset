@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53216b9a003d4bf4e9902d68777cf9d6, type: 3}
   m_Name: Ghost
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ghost
+  <Name>k__BackingField: {fileID: 0}
+  <Reward>k__BackingField: 10
   <Speed>k__BackingField: 10
   <Health>k__BackingField: 4
-  <Model>k__BackingField: {fileID: 6100057286477829868, guid: 67640661192da9f49997eba5ff1923c4, type: 3}
+  <Model>k__BackingField: {fileID: -492521629719916201, guid: 67640661192da9f49997eba5ff1923c4, type: 3}

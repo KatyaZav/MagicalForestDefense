@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53216b9a003d4bf4e9902d68777cf9d6, type: 3}
   m_Name: Ork
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ork
+  <Name>k__BackingField: {fileID: 0}
+  <Reward>k__BackingField: 10
   <Speed>k__BackingField: 2
   <Health>k__BackingField: 20
-  <Model>k__BackingField: {fileID: 3397890910746744926, guid: 44b92eddc700d3b49a7fe236de782804, type: 3}
+  <Model>k__BackingField: {fileID: 2232064359673618605, guid: 44b92eddc700d3b49a7fe236de782804, type: 3}

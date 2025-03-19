@@ -16,14 +16,21 @@ MonoBehaviour:
   - _waveEnemies:
     - <Enemy>k__BackingField: {fileID: 11400000, guid: bc6c1a6c295ce964eb35dcdd1daeef5b, type: 2}
       <Count>k__BackingField: 5
-    - <Enemy>k__BackingField: {fileID: 11400000, guid: bc6c1a6c295ce964eb35dcdd1daeef5b, type: 2}
+    - <Enemy>k__BackingField: {fileID: 11400000, guid: 5c37452a2f329c94a93047f241a90e3f, type: 2}
       <Count>k__BackingField: 10
     <IsBoss>k__BackingField: 0
     <WaitTime>k__BackingField: 20
   - _waveEnemies:
-    - <Enemy>k__BackingField: {fileID: 11400000, guid: bc6c1a6c295ce964eb35dcdd1daeef5b, type: 2}
+    - <Enemy>k__BackingField: {fileID: 11400000, guid: 3140fd9cef4175847b8979a856ec86c7, type: 2}
       <Count>k__BackingField: 5
-    - <Enemy>k__BackingField: {fileID: 11400000, guid: bc6c1a6c295ce964eb35dcdd1daeef5b, type: 2}
+    - <Enemy>k__BackingField: {fileID: 11400000, guid: 4f9905a63f49daa4f826aa98b3e185af, type: 2}
+      <Count>k__BackingField: 10
+    <IsBoss>k__BackingField: 0
+    <WaitTime>k__BackingField: 20
+  - _waveEnemies:
+    - <Enemy>k__BackingField: {fileID: 11400000, guid: 9f2c29ece8554e14ca743580fcd6bbe7, type: 2}
+      <Count>k__BackingField: 5
+    - <Enemy>k__BackingField: {fileID: 11400000, guid: d1d4ddae9658a5b4fbc05a318f2eee99, type: 2}
       <Count>k__BackingField: 10
     <IsBoss>k__BackingField: 0
     <WaitTime>k__BackingField: 20

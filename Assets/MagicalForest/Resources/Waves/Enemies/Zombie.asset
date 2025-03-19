@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53216b9a003d4bf4e9902d68777cf9d6, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Zombie
+  <Name>k__BackingField: {fileID: 0}
+  <Reward>k__BackingField: 10
   <Speed>k__BackingField: 2
   <Health>k__BackingField: 6
-  <Model>k__BackingField: {fileID: 348831509215718818, guid: 524b6bfe8d518484ea1b6bb6c84dfb96, type: 3}
+  <Model>k__BackingField: {fileID: 6745465793903864589, guid: 524b6bfe8d518484ea1b6bb6c84dfb96, type: 3}

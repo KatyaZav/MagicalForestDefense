@@ -37,8 +37,10 @@ public class WaveSystem : IDisposable
     {
         for (var waveCount = 0; waveCount < _waveConfig.GameWaves.Count; waveCount++)
         {
-            Debug.Log($"Start new wave number{waveCount}");
-            var currentWaveData = _waveConfig.GameWaves[_currentWave];
+            Debug.Log($"Start new wave number {waveCount}");
+            
+            _currentWave = waveCount;
+            var currentWaveData = _waveConfig.GameWaves[waveCount];
 
             for (var i = 0; i < currentWaveData.WaveEnemies.Count; i++)
             {

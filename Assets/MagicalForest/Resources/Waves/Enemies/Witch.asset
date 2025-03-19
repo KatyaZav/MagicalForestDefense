@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53216b9a003d4bf4e9902d68777cf9d6, type: 3}
   m_Name: Witch
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Witch
+  <Name>k__BackingField: {fileID: 0}
+  <Reward>k__BackingField: 10
   <Speed>k__BackingField: 4
   <Health>k__BackingField: 10
-  <Model>k__BackingField: {fileID: 7714947026493785111, guid: 8dc645f1029cf594d826c00f58dd4bc4, type: 3}
+  <Model>k__BackingField: {fileID: -8056431347007339843, guid: 8dc645f1029cf594d826c00f58dd4bc4, type: 3}
