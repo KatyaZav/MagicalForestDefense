@@ -48,11 +48,12 @@ public class WaveSystem : IDisposable
                     currentWaveData.WaveEnemies[i].Enemy, currentWaveData.WaveEnemies[i].Count);
 
                 yield return new WaitUntil(() => _spawner.IsSpawning.Value == false);
+                yield return new WaitForSeconds(1.5f);
             }
 
-            //тут должен быть таймер
-
-            yield return null;
+            yield return new WaitForSeconds(currentWaveData.WaitTime);
         }
-}
+
+        Debug.Log("SpawnEnded");
+    }
 }

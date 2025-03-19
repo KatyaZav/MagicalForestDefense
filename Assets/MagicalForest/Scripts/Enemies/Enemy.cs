@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 {
-    public event Action<Enemy> Died;
+    public event Action<Enemy> Died, PathCompleted;
 
     private PathMover _pathMover;
     private ReactiveVariable<float> _health;
@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
     {
         Mover mover = new Mover(transform, config.Speed);
         _pathMover = new PathMover(mover, path);
+
+        _pathMover.PathCompleted += OnPathCompleted;
     }
 
     public IReadOnlyVariable<float> Health => _health;
@@ -28,8 +30,7 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 
         if (_health.Value <= 0)
         {
-            _isDead = true;
-            Died?.Invoke(this);
+            OnDead();
         }
     }
 
@@ -40,4 +41,16 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
 
         _pathMover?.CustomUpdate(deltaTime);
     }
+
+    private void OnDead()
+    {
+        _isDead = true;
+        Died?.Invoke(this);
+    }
+
+    private void OnPathCompleted()
+    {
+        PathCompleted?.Invoke(this);
+    }
+
 }

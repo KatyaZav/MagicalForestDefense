@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class EnemiesListHolderSystem
 {
-    public event Action<int> ListChanged;
+    public event Action RemovedLast;
+
+    public event Action<Enemy> Added, Removed;
     private List<Enemy> _enemies = new List<Enemy>();
 
     public IReadOnlyList<Enemy> Enemies => _enemies;
@@ -11,7 +13,7 @@ public class EnemiesListHolderSystem
     public void AddEnemy(Enemy enemy)
     {
         _enemies.Add(enemy);
-        ListChanged?.Invoke(_enemies.Count);
+        Added?.Invoke(enemy);
     }
 
     public void RemoveEnemy(Enemy enemy)
@@ -19,6 +21,9 @@ public class EnemiesListHolderSystem
         if (_enemies.Remove(enemy) == false)
             throw new System.Exception("Try to remove enemy not exist");
         
-        ListChanged?.Invoke(_enemies.Count);
+        Removed?.Invoke(enemy);
+
+        if (_enemies.Count == 0)
+            RemovedLast?.Invoke();
     }
 }
