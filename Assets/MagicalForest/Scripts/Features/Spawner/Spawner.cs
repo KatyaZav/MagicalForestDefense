@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Spawner
 {
-    private const float TimeBetween = 0.5f;
+    private const float TimeBetween = 3f;
 
     private ICoroutinePerformer _coroutinePerformer;
 
@@ -43,7 +43,7 @@ public class Spawner
         for (var i = 0; i < count; i++)
         {
             SpawnEnemy(config);
-            yield return new WaitForSeconds(TimeBetween);
+            yield return new WaitForSeconds(TimeBetween/config.Speed);
         }
 
         _isSpawning.Value = false;
