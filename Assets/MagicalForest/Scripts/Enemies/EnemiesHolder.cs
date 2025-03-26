@@ -4,7 +4,7 @@ public class EnemiesHolder : IUpdatable
 {
     private EnemiesListHolderSystem _enemiesListHolderSystem;
 
-    public EnemiesHolder(EnemiesListHolderSystem enemiesListHolderSystem)
+    public EnemiesHolder(EnemiesListHolderSystem enemiesListHolderSystem, Player)
     {
         _enemiesListHolderSystem = enemiesListHolderSystem;
 
@@ -42,7 +42,8 @@ public class EnemiesHolder : IUpdatable
 
     private void OnEnemyDied(Enemy enemy)
     {
-        Debug.Log("damage");
+        Debug.Log("kill enemy");
+
 
         _enemiesListHolderSystem.RemoveEnemy(enemy);
         GameObject.Destroy(enemy.gameObject);
