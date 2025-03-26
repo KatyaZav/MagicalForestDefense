@@ -51,6 +51,8 @@ public class GameplayBootstrap : MonoBehaviour
     private void ProcessRegistrations()
     {
         _container.RegisterAsSingle(c => new EnemiesListHolderSystem());
+        _container.RegisterAsSingle(c => new PlayerGameplaySaves(0,100,10));
+
         _container.RegisterAsSingle(c => new Spawner(
             _container.Resolve<EnemiesListHolderSystem>(),
             _levelHolder.GetQueue(),
@@ -62,7 +64,8 @@ public class GameplayBootstrap : MonoBehaviour
             _container.Resolve<ICoroutinePerformer>()));
 
         _container.RegisterAsSingle(c => new EnemiesHolder(
-            _container.Resolve<EnemiesListHolderSystem>()
+            _container.Resolve<EnemiesListHolderSystem>(),
+            _container.Resolve<PlayerGameplaySaves>()
             ));
 
         _container.Initialize();

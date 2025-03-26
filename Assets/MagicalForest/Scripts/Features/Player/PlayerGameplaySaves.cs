@@ -7,6 +7,13 @@ public class PlayerGameplaySaves
     private ReactiveVariable<int> _coins;
     private ReactiveVariable<int> _playerHealth;
 
+    public PlayerGameplaySaves(int wave, int coins, int playerHealth)
+    {
+        _wave = new ReactiveVariable<int>(wave);
+        _coins = new ReactiveVariable<int>(coins);
+        _playerHealth = new ReactiveVariable<int>(playerHealth);
+    }
+
     public IReadOnlyVariable<int> Wave => _wave;
     public IReadOnlyVariable<int> Coins => _coins;
     public IReadOnlyVariable<int> Health => _playerHealth;

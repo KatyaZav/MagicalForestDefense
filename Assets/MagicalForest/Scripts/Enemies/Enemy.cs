@@ -15,7 +15,9 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable, IDisposable
     {
         Mover mover = new Mover(transform, config.Speed);
 
+        Damage = config.Damage;
         Reward = config.Reward;
+
         _pathMover = new PathMover(mover, path);
         _health = new HealthBehaviour(new ReactiveVariable<float>(config.Health));
 
@@ -25,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable, IDisposable
 
     public IReadOnlyVariable<float> Health => _health.Health;
     public int Reward { get; private set; }
+    public int Damage { get; private set; }
 
     public void Dispose()
     {

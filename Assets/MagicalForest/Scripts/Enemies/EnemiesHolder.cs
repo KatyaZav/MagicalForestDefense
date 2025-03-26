@@ -3,10 +3,12 @@ using UnityEngine;
 public class EnemiesHolder : IUpdatable
 {
     private EnemiesListHolderSystem _enemiesListHolderSystem;
+    private PlayerGameplaySaves _saves;
 
-    public EnemiesHolder(EnemiesListHolderSystem enemiesListHolderSystem, Player)
+    public EnemiesHolder(EnemiesListHolderSystem enemiesListHolderSystem, PlayerGameplaySaves saves)
     {
         _enemiesListHolderSystem = enemiesListHolderSystem;
+        _saves = saves;
 
         _enemiesListHolderSystem.Added += OnAdded;
         _enemiesListHolderSystem.Removed += OnRemoved;
@@ -36,14 +38,15 @@ public class EnemiesHolder : IUpdatable
     }
     private void OnPathCompleted(Enemy enemy)
     {
+        _saves.RemoveHealth(enemy.Damage);
+
         _enemiesListHolderSystem.RemoveEnemy(enemy);
         GameObject.Destroy(enemy.gameObject);
     }
 
     private void OnEnemyDied(Enemy enemy)
     {
-        Debug.Log("kill enemy");
-
+        _saves.AddCoins(enemy.Reward);
 
         _enemiesListHolderSystem.RemoveEnemy(enemy);
         GameObject.Destroy(enemy.gameObject);
