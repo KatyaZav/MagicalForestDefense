@@ -20,6 +20,8 @@ public class EnemiesHolder : IUpdatable
 
     private void OnRemoved(Enemy enemy)
     {
+        enemy.Dispose();
+
         enemy.Died -= OnEnemyDied;
         enemy.PathCompleted -= OnPathCompleted;
     }
@@ -45,5 +47,4 @@ public class EnemiesHolder : IUpdatable
         _enemiesListHolderSystem.RemoveEnemy(enemy);
         GameObject.Destroy(enemy.gameObject);
     }
-
 }

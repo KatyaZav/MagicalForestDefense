@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable, IUpdatable
+public class Enemy : MonoBehaviour, IDamagable, IUpdatable, IDisposable
 {
     public event Action<Enemy> Died, PathCompleted;
 
@@ -19,9 +19,15 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
         _health = new HealthBehaviour(new ReactiveVariable<float>(config.Health));
 
         _pathMover.PathCompleted += OnPathCompleted;
+        _health.Died += OnDied;
     }
 
     public IReadOnlyVariable<float> Health => _health.Health;
+
+    public void Dispose()
+    {
+        _health.Died -= OnDied;
+    }
 
     public void TakeDamage(float damage)
     {
@@ -39,5 +45,10 @@ public class Enemy : MonoBehaviour, IDamagable, IUpdatable
     private void OnPathCompleted()
     {
         PathCompleted?.Invoke(this);
+    }
+
+    private void OnDied()
+    {
+        Died?.Invoke(this);
     }
 }
